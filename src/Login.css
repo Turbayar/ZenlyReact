@@ -76,7 +76,7 @@ button {
 }
 
 button:hover {
-  transform: rotateY(360deg);
+  transform: rotateY(20deg);
   transition: 1s;
   background-color: #14213d;
 }

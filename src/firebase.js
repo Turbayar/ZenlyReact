@@ -1,44 +1,16 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+// import 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDlVxMT6Sgeb4W0OBoPo9xlOWlHQspjxtA",
-    authDomain: "zenly-50a93.firebaseapp.com",
-    projectId: "zenly-50a93",
-    storageBucket: "zenly-50a93.appspot.com",
-    messagingSenderId: "454732830473",
-    appId: "1:454732830473:web:79c51a86a5a845d2bf65d8"
+    apiKey: "AIzaSyCF9gElLC3H7yXnDmGbsXVrkuwluFGtae0",
+    authDomain: "leaply-8eb1e.firebaseapp.com",
+    projectId: "leaply-8eb1e",
+    storageBucket: "leaply-8eb1e.appspot.com",
+    messagingSenderId: "969549718431",
+    appId: "1:969549718431:web:63fc11e6b54331000353aa"
   };
+  
 
- const app = firebase.initializeApp(firebaseConfig);
-
- const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('login-btn', {
-    size: 'invisible',
-});
-
-let confirmationResult;
-document.querySelector('#login-btn').onclick = (e) => {
-    const phone = document.querySelector('input.phone').value;
-    const appVerifier = recaptchaVerifier;
-
-    firebase.auth().signInWithPhoneNumber(`+976${phone}`, appVerifier).then((result) => {
-        confirmationResult = result;
-        console.log(confirmationResult)
-    }).catch((error) => {
-        console.log(error);
-    });
-}
-
-document.querySelector('#verify-btn').onclick = () => {
-    const code = document.querySelector('input.verify-code').value;
-
-    confirmationResult.confirm(code).then((result) => {
-        console.log(result.user.phoneNumber, 'utasnii dugaartai hun amjilttai newterlee');
-
-        location.replace('index.html');
-    }).catch((error) => {
-        console.log('Code aldaatai bna')
-    });
-}
-
- export const db = firebase.firestore();
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
