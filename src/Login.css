@@ -80,3 +80,7 @@ button:hover {
   transition: 1s;
   background-color: #14213d;
 }
+#map {
+  height: 80vh;
+  width: 80vw;
+}
