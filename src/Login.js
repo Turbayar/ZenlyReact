@@ -42,42 +42,53 @@ export const Login = () => {
 
   return (
     <div className="body">
-         <div id="recaptcha-container"></div>
-
-      {
-        isStep1 ? (
-          <div className="login-container">
-            <h1>Login</h1>
-            <div className="main">
-               <div className="login-field">
-                <p>Username</p>
-                <input type="text" placeholder="Not required" className="username"/>
-                </div>
-            </div>
+      {isStep1 ? (
+        <div className="login-container">
+          <h1>Login</h1>
+          <div id="recaptcha-container"></div>
+          <div className="main">
             <div className="login-field">
-              <p>Phone Number</p>
+              <p>Username</p>
               <input
                 type="text"
-                placeholder="Phone Number"
-                className="phone"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
+                placeholder="Not required"
+                className="username"
               />
             </div>
-            <button onClick={onClickLogin} id="login-btn">
+          </div>
+          <div className="login-field">
+            <p>Phone Number</p>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              className="phone"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+          </div>
+          <button onClick={onClickLogin} id="login-btn">
             login
-            </button>
-          </div>
-         
-        ) : (
-          < div className="login-container">
-            <input type="text" placeholder="Code" value={value} onChange={(e) => setValue(e.target.value)} className="verify-code" />
-            <button className="login-btn" id="verify-btn" onClick={onClickCheckCode}> verify </button>
-          </div>
-        )
-          
-        
-      }
+          </button>
+        </div>
+      ) : (
+        <div className="login-container">
+          <input
+            type="text"
+            placeholder="Code"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            className="verify-code"
+          />
+          <button
+            className="login-btn"
+            id="verify-btn"
+            onClick={onClickCheckCode}
+          >
+            {" "}
+            verify{" "}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
